@@ -7,25 +7,29 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:backend": "if [ -n \"${CI:-}\" ]; then ampx pipeline-deploy --app-id $AWS_APP_ID --branch $AWS_BRANCH; else npx ampx sandbox --outputs-format json --outputs-version 1.2; fi",
+    "deploy:frontend": "npm run build",
+    "deploy": "AWS_APP_ID=${AWS_APP_ID:-d1ntn929km6rwk} AWS_BRANCH=${AWS_BRANCH:-main} npm run deploy:backend && npm run deploy:frontend"
   },
   "dependencies": {
+    "@aws-amplify/platform-core": "^1.10.0",
     "@aws-amplify/ui-react": "^6.5.5",
     "aws-amplify": "^6.6.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-  "@parcel/watcher": "^2.4.1",
     "@aws-amplify/backend": "^1.5.0",
     "@aws-amplify/backend-cli": "^1.2.9",
+    "@parcel/watcher": "^2.4.1",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "aws-cdk": "^2.163.1",
-    "aws-cdk-lib": "^2.163.1",
+    "aws-cdk": "2.163.1",
+    "aws-cdk-lib": "2.163.1",
     "constructs": "^10.3.0",
     "esbuild": "^0.20.2",
     "eslint": "^8.57.0",
