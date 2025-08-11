@@ -4,11 +4,18 @@ backend:
   phases:
     build:
       commands:
-        - npm install --include=optional
+        # Nuclear option: completely fresh install
+        - rm -rf node_modules package-lock.json
+        - npm install
+        # Specifically install @parcel/watcher with all flags
+        - npm install @parcel/watcher --include=optional --build-from-source --verbose
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 
 frontend:
   phases:
+    preBuild:
+      commands:
+        - npm install
     build:
       commands:
         - npm run build
@@ -17,6 +24,4 @@ frontend:
     files:
       - '**/*'
   cache:
-    paths:
-      - .npm/**/*
-      - node_modules/**/*
+    paths: []  # Disable caching temporarily

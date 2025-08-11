@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+  "@parcel/watcher": "^2.4.1",
     "@aws-amplify/backend": "^1.5.0",
     "@aws-amplify/backend-cli": "^1.2.9",
     "@types/react": "^18.2.66",
@@ -23,8 +24,8 @@
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "aws-cdk": "^2.138.0",
-    "aws-cdk-lib": "^2.138.0",
+    "aws-cdk": "^2.163.1",
+    "aws-cdk-lib": "^2.163.1",
     "constructs": "^10.3.0",
     "esbuild": "^0.20.2",
     "eslint": "^8.57.0",
@@ -33,5 +34,8 @@
     "tsx": "^4.7.2",
     "typescript": "^5.4.5",
     "vite": "^5.4.10"
+  },
+  "overrides": {
+    "brace-expansion": "^2.0.1"
   }
 }
