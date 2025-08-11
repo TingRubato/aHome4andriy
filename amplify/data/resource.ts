@@ -22,7 +22,9 @@ export const data = defineData({
     defaultAuthorizationMode: "apiKey",
     // API Key is used for a.allow.public() rules
     apiKeyAuthorizationMode: {
-      expiresInDays: 30,
+  // Rotated to force replacement after failed deployment; adjust days as needed
+  expiresInDays: 60,
+  description: 'Rotated public API key v2'
     },
   },
 });
